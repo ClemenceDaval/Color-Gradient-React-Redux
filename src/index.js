@@ -1,6 +1,6 @@
 // on importe le store
 import store from 'src/store';
-import { changeDirectionToRight, changeDirectionToLeft, changeFirstColor, changeLastColor } from './actions';
+import { changeDirection, changeFirstColor, changeLastColor } from './actions';
 
 // == Imports
 import { randomHexColor, generateSpanColor } from './utils';
@@ -75,31 +75,11 @@ document.getElementById('randLast')
     store.dispatch(changeLastColor(randomHexColor()));
   });
 
-document.getElementById('toLeft')
-  .addEventListener('click', () => {
-    // hey le store, change la direction vers la droite
+const buttons = document.querySelectorAll('.changeDirection');
 
-    // notre intention est représentée par un objet
-    // action dont la propriété type (convention)
-    // permet de définir l'action à accomplir
-    /*
-    Avant les action creators :
-    const changeDirectionToLeftAction = {
-      type: CHANGE_DIRECTION_TO_LEFT,
-    };
-    store.dispatch(changeDirectionToLeftAction);
-    */
-
-    store.dispatch(changeDirectionToLeft());
-
-    // on n'a plus besoin de demander le rafraichissement de l'interface
-    // nous avons abonné nos fonctions de rendu aux modifications du state
+buttons.forEach((button) => {
+  button.addEventListener('click', (event) => {
+    const newDirection = event.target.id;
+    store.dispatch(changeDirection(newDirection));
   });
-
-document.getElementById('toRight')
-  .addEventListener('click', () => {
-    // on emmet simplement notre intention
-    // ici, c'est l'exécution de notre action creator qui retourne 
-    // l'objet de type action à dispatcher
-    store.dispatch(changeDirectionToRight());
-  });
+});
