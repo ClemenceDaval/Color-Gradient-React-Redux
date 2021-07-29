@@ -1,7 +1,7 @@
 /* eslint-disable arrow-body-style */
 // on stocke l'état initial de notre application
 
-import { CHANGE_DIRECTION_TO_LEFT, CHANGE_DIRECTION_TO_RIGHT, CHANGE_FIRST_COLOR, CHANGE_LAST_COLOR } from "../actions";
+import { CHANGE_DIRECTION, CHANGE_FIRST_COLOR, CHANGE_LAST_COLOR } from '../actions';
 
 // dans une variable (constante plutôt)
 const initialState = {
@@ -26,15 +26,10 @@ const reducer = (state = initialState, action = {}) => {
   // du state courant auquel on change seulement ce qui est
   // induit par l'action demandée
   switch (action.type) {
-    case CHANGE_DIRECTION_TO_LEFT:
+    case CHANGE_DIRECTION:
       return {
         ...state,
-        direction: '270deg',
-      };
-    case CHANGE_DIRECTION_TO_RIGHT:
-      return {
-        ...state,
-        direction: '90deg',
+        direction: action.newDirection,
       };
     case CHANGE_FIRST_COLOR:
       return {
