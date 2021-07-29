@@ -1,21 +1,17 @@
+// Ici, on peut noter que notre composant
+// de présentaion reste un composant de présentation
+// Il n'a pas besoin de savoir d'où vient l'information qu'il doit afficher
 import React from 'react';
-// on importe le hook useSelector
-// qui va nous permettre d'accéder en lecture
-// au state 'gardé par le store)
-import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const NbColors = () => {
-  // on utilise le hook useSelector
-  // on donne à ce hook un callback avec un paramètre
-  // permettant d'accéder au store.
-  // ce callback doit permettre de renvoyer l'information
-  // utile depuis le state.
-  const nbColors = useSelector((state) => state.nbColors);
-  return (
-    <div id="nbColors">
-      {nbColors} couleur(s) générée(s)
-    </div>
-  );
+const NbColors = ({ nbColors }) => (
+  <div id="nbColors">
+    {nbColors} couleur(s) générée(s)
+  </div>
+);
+
+NbColors.propTypes = {
+  nbColors: PropTypes.number.isRequired,
 };
 
 export default NbColors;
