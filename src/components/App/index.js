@@ -4,8 +4,9 @@ import React from 'react';
 import NbColors from 'src/containers/NbColors';
 import Colors from 'src/containers/Colors';
 import ColorButtons from 'src/containers/ColorButtons';
+import Gradient from 'src/containers/Gradient';
+
 import DirectionButtons from '../DirectionButtons';
-import Gradient from '../Gradient';
 
 const App = () => (
   <div className="app">
